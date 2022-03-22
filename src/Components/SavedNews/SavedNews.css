@@ -1,0 +1,5 @@
+@import url(../../blocks/saved/saved.css);
+@import url(../../blocks/saved/__info/saved__info.css);
+@import url(../../blocks/saved/__tags/saved__tags.css);
+@import url(../../blocks/saved/__text/saved__text.css);
+@import url(../../blocks/saved/__title/saved__title.css);

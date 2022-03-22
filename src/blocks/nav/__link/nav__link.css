@@ -1,0 +1,12 @@
+.nav__link {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  margin-right: 42px;
+}
+
+.nav__link:last-of-type {
+  margin-right: 0;
+}

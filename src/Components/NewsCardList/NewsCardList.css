@@ -1,0 +1,4 @@
+@import url(../../blocks/news/news.css);
+@import url(../../blocks/news/__search-results/news__search-results.css);
+@import url(../../blocks/news/__show-more/news__show-more.css);
+@import url(../../blocks/news/__list/news__list.css);

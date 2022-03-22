@@ -1,0 +1,16 @@
+.news__button {
+  height: 40px;
+  width: 40px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: auto;
+  border-radius: 10px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  display: inline-block;
+}
+
+.news__button:hover {
+  color: black;
+}

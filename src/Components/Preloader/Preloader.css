@@ -1,0 +1,7 @@
+@import url(../../blocks/loading/loading.css);
+@import url(../../blocks/loading/__failed/_img/loading__failed_img.css);
+@import url(../../blocks/loading/__failed/loading__failed.css);
+@import url(../../blocks/loading/__failed/_text/loading__failed_text.css);
+@import url(../../blocks/loading/__failed/_title/loading__failed_title.css);
+@import url(../../blocks/loading/__img/loading__img.css);
+@import url(../../blocks/loading/__text/loading__text.css);
