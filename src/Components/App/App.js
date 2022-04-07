@@ -18,10 +18,10 @@ function App() {
   const [news, setNews] = React.useState([]);
   const [isPreloaderOpen, setIsPreloaderOpen] = React.useState(false);
   const [isNews, setIsNews] = React.useState(false);
-  const [isNewsSearch, setIsNewsSearch] = React.useState(false);
   const [isNewsSaved, setIsNewsSaved] = React.useState(false);
   const [savedArticles, setSavedArticles] = React.useState([]);
   const [errorMessage, setErrorMessage] = React.useState('');
+  const [tooltip, setTooltip] = React.useState('Save article');
   const history = useHistory();
 
   const handleOnClose = () => {
@@ -46,7 +46,6 @@ function App() {
       .then((data) => {
         setNews(data.articles);
         setIsNews(true);
-        setIsNewsSearch(true);
         setIsPreloaderOpen(false);
       })
       .catch((err) => {
@@ -136,18 +135,18 @@ function App() {
     localStorage.removeItem('username');
   };
 
+  //saved articles tab
   const handleSavedArticles = () => {
     auth
       .getArticles(jwt)
       .then((data) => {
-        console.log(data);
-        setIsNewsSaved(true);
         setSavedArticles(data.data);
       })
       .catch((err) => console.log(err));
     history.push('/articles');
   };
 
+  //saved articles tab updates when an article is deleted
   React.useEffect(() => {
     auth
       .getArticles(jwt)
@@ -159,16 +158,30 @@ function App() {
       });
   }, [history, jwt]);
 
+  // React.useEffect((data) => {
+  //   if (!data._id) {
+  //     setIsNewsSaved(false);
+  //     setTooltip('Save article');
+  //   }
+  //   setIsNewsSaved(true);
+  //   setTooltip('Delete article');
+  // }, []);
+
+  //saving an article
   const handleSaveArticle = (data) => {
     console.log(data);
-    auth
-      .saveArticles(data, jwt)
-      .then((data) => {
-        setSavedArticles([data.data, ...savedArticles]);
-      })
-      .catch((err) => console.log(err));
+    if (!data._id) {
+      auth
+        .saveArticles(data, jwt)
+        .then((data) => {
+          setSavedArticles([data.data, ...savedArticles]);
+        })
+        .catch((err) => console.log(err));
+    }
+    handleDeleteArticle(data);
   };
 
+  //deleting an article
   const handleDeleteArticle = (data) => {
     console.log(data);
     auth
@@ -180,7 +193,7 @@ function App() {
       })
       .catch((err) => console.log(err));
   };
-  console.log(savedArticles);
+
   return (
     <>
       <Switch>
@@ -195,8 +208,10 @@ function App() {
             onSavedArticles={handleSavedArticles}
             onSignOut={handleLogOut}
             isUser={username}
-            onClick={isNewsSaved ? handleDeleteArticle : handleSaveArticle}
+            onClick={handleSaveArticle}
             username={username}
+            tooltip={tooltip}
+            signIn={handleSigninPopup}
           />
         </Route>
         <ProtectedRoute path='/articles' login={isLogin}>
@@ -207,7 +222,8 @@ function App() {
             savedArticleLength={savedArticles.length}
             username={username}
             onSignOut={handleLogOut}
-            onClick={isNewsSaved ? handleDeleteArticle : handleSaveArticle}
+            onClick={handleSaveArticle}
+            tooltip={tooltip}
           />
         </ProtectedRoute>
       </Switch>
@@ -228,3 +244,4 @@ function App() {
 }
 
 export default App;
+

@@ -26,32 +26,33 @@ function NewsCard(props) {
     props.onClick(props.news);
   };
 
-  const handleDelete = (e) => {
+  const handleSignIn = (e) => {
     e.preventDefault();
-    props.onClick(props.news);
+    props.signIn();
   };
 
   return (
     <>
       <li className='news__item'>
-        <div>
-          <img className='news__img' src={props.image} />
-          <button
-            className={`news__button button ${
-              props.isNewsSaved ? 'news__delete' : 'news__save'
-            }`}
-            type='button'
-            aria-label='save'
-            onClick={props.isNewsSaved ? handleDelete : handleSave}
-          >
-            <div className='news__tooltip'>
-              {props.isNewsSaved ? 'Delete Article' : 'Save Article'}
-            </div>
-          </button>
-        </div>
+        <img className='news__img' src={props.image} />
+        <button
+          className={`news__button button ${
+            props.isNewsSaved ? 'news__delete' : 'news__save'
+          }`}
+          type='button'
+          aria-label='save'
+          onClick={props.isLoggedIn ? handleSave : handleSignIn}
+        >
+          <div className='news__tooltip'>
+            {props.isLoggedIn ? props.tooltip : 'Sign in to save article'}
+          </div>
+        </button>
+
         <div className='news__info'>
           <p className='news__date'>{newDate()}</p>
-          <h3 className='news__title'>{props.title}</h3>
+          <a href={props.link}>
+            <h3 className='news__title'>{props.title}</h3>
+          </a>
           <p className='news__text'>{props.content}</p>
           <p className='news__tag'>{props.tag}</p>
         </div>

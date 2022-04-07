@@ -19,7 +19,6 @@ function SavedNews(props) {
             return (
               <NewsCard
                 key={index}
-                // isNewsSearch={props.isNewsSearch}
                 publishedAt={article.date}
                 link={article.link}
                 image={article.image}
@@ -28,6 +27,7 @@ function SavedNews(props) {
                 tag={article.source}
                 news={article}
                 isLoggedIn={props.isLoggedIn}
+                tooltip={props.tooltip}
                 isNewsSaved={props.isNewsSaved}
                 onClick={props.onClick}
               />

@@ -21,8 +21,10 @@ function Main(props) {
           isNewsSearch={props.isNewsSearch}
           news={props.news}
           isLoggedIn={props.isLoggedIn}
-          tooltipMessage={props.tooltipMessage}
+          tooltip={props.tooltip}
           onClick={props.onClick}
+          isNewsSaved={props.isNewsSaved}
+          signIn={props.signIn}
         />
       ) : null}
       <About />

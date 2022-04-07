@@ -21,8 +21,10 @@ function NewsCardList(props) {
                 tag={article.source.name}
                 publishedAt={article.publishedAt}
                 isLoggedIn={props.isLoggedIn}
-                isNewsSaved={props.isNewsSaved}
+                tooltip={props.tooltip}
                 onClick={props.onClick}
+                isNewsSaved={props.isNewsSaved}
+                signIn={props.signIn}
               />
             );
           })}
