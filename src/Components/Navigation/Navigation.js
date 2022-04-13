@@ -14,9 +14,17 @@ function Navigation(props) {
   };
   return (
     <>
-      <div className={`nav ${isMenuOpen ? 'nav__open_menu' : null}`}>
+      <nav className={`nav ${isMenuOpen ? 'nav__open_menu' : null}`}>
         <button
-          className={` ${isMenuOpen ? 'nav__menu_close' : 'nav__menu'}`}
+          className={`${
+            props.text
+              ? isMenuOpen
+                ? 'nav__menu_close'
+                : 'nav__menu'
+              : isMenuOpen
+              ? 'nav__menu_close_dark'
+              : 'nav__menu_dark'
+          }`}
           onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu}
         />
         <Link
@@ -57,7 +65,11 @@ function Navigation(props) {
               onClick={props.onSignOut}
             >
               {props.username}
-              <span className='nav__sign-out' />
+              <span
+                className={`${
+                  props.text ? 'nav__sign-out' : 'nav__sign-out_dark'
+                }`}
+              />
             </Link>
           ) : (
             <Link
@@ -71,7 +83,7 @@ function Navigation(props) {
             </Link>
           )}
         </div>
-      </div>
+      </nav>
     </>
   );
 }

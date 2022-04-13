@@ -1,0 +1,12 @@
+.nav__sign-out_dark {
+    background-image: url('../../../../images/signout_dark.svg');
+color: white;
+height: 16px;
+width: 16px;
+background-size: contain;
+background-position: center;
+background-repeat: no-repeat;
+margin-left: 10px;
+display: inline-block;
+vertical-align: middle;
+}

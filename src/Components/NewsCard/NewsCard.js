@@ -50,7 +50,7 @@ function NewsCard(props) {
 
         <div className='news__info'>
           <p className='news__date'>{newDate()}</p>
-          <a href={props.link}>
+          <a href={props.link} className='news__title'>
             <h3 className='news__title'>{props.title}</h3>
           </a>
           <p className='news__text'>{props.content}</p>

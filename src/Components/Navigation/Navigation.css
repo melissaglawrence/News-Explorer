@@ -12,3 +12,6 @@
 @import url(../../blocks/nav/__open/nav__open.css);
 @import url(../../blocks/nav/__hidden/nav__hidden.css);
 @import url(../../blocks/nav/__open/_menu/nav__open_menu.css);
+@import url(../../blocks/nav/__sign-out/_dark/nav__sign-out_dark.css);
+@import url(../../blocks/nav/__menu/_dark/nav__menu_dark.css);
+@import url(../../blocks/nav/__menu/_close/_dark/nav__menu_close_dark.css);

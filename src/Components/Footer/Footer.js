@@ -14,24 +14,24 @@ function Footer() {
           <Link to='/' className='footer__link button'>
             Home
           </Link>
-          <Link
-            to='https://practicum.yandex.com/'
+          <a
+            href='https://practicum.yandex.com/'
             className='footer__link button'
           >
             Practicum by Yandex
-          </Link>
-          <Link
-            to='www.linkedin.com/in/melissaglawrence8'
+          </a>
+          <a
+            href='www.linkedin.com/in/melissaglawrence8'
             className='footer__link button'
           >
             <img src={linkedin} />
-          </Link>
-          <Link
-            to='https://github.com/melissaglawrence'
+          </a>
+          <a
+            href='https://github.com/melissaglawrence'
             className='footer__link button'
           >
             <img src={github} />
-          </Link>
+          </a>
         </div>
       </footer>
     </>
