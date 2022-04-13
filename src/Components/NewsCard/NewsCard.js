@@ -37,7 +37,13 @@ function NewsCard(props) {
         <img className='news__img' src={props.image} />
         <button
           className={`news__button button ${
-            props.isNewsSaved ? 'news__delete' : 'news__save'
+            props.isNewsSearch
+              ? props.isNewsSaved
+                ? 'news__save_active'
+                : 'news__save'
+              : props.isNewsSaved
+              ? 'news__delete'
+              : 'news__save'
           }`}
           type='button'
           aria-label='save'

@@ -30,6 +30,7 @@ function SavedNews(props) {
                 tooltip={props.tooltip}
                 isNewsSaved={props.isNewsSaved}
                 onClick={props.onClick}
+                isNewsSearch={false}
               />
             );
           })}

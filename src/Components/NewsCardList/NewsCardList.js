@@ -1,5 +1,6 @@
 import React from 'react';
 import NewsCard from '../NewsCard/NewsCard';
+import Preloader from '../Preloader/Preloader';
 
 function NewsCardList(props) {
   const [currentIndex, setCurrentIndex] = React.useState(3);
@@ -7,7 +8,12 @@ function NewsCardList(props) {
   return (
     <>
       <section className='news'>
-        <h2 className='news__search-results'>{'Search results'}</h2>
+        <h2 className='news__search-results'>
+          {props.isNewsFailed ? null : 'Search results'}
+        </h2>
+        {props.isPreloaderOpen ? (
+          <Preloader isNewsFailed={props.isNewsFailed} />
+        ) : null}
         <ul className='news__list'>
           {props.news.slice(0, currentIndex).map((article, index) => {
             return (
@@ -25,17 +31,20 @@ function NewsCardList(props) {
                 onClick={props.onClick}
                 isNewsSaved={props.isNewsSaved}
                 signIn={props.signIn}
+                isNewsSearch={true}
               />
             );
           })}
         </ul>
-        <button
-          type='button'
-          className='news__show-more button'
-          onClick={() => setCurrentIndex(currentIndex + 3)}
-        >
-          Show more
-        </button>
+        {props.isNewsFailed ? null : (
+          <button
+            type='button'
+            className='news__show-more button'
+            onClick={() => setCurrentIndex(currentIndex + 3)}
+          >
+            Show more
+          </button>
+        )}
       </section>
     </>
   );

@@ -25,6 +25,8 @@ function Main(props) {
           onClick={props.onClick}
           isNewsSaved={props.isNewsSaved}
           signIn={props.signIn}
+          isPreloaderOpen={props.isPreloaderOpen}
+          isNewsFailed={props.isNewsFailed}
         />
       ) : null}
       <About />

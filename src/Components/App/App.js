@@ -18,6 +18,7 @@ function App() {
   const [news, setNews] = React.useState([]);
   const [isPreloaderOpen, setIsPreloaderOpen] = React.useState(false);
   const [isNews, setIsNews] = React.useState(false);
+  const [isNewsFailed, setIsNewsFailed] = React.useState(false);
   const [isNewsSaved, setIsNewsSaved] = React.useState(false);
   const [savedArticles, setSavedArticles] = React.useState([]);
   const [errorMessage, setErrorMessage] = React.useState('');
@@ -41,17 +42,32 @@ function App() {
 
   const handleGetNews = (search) => {
     setIsPreloaderOpen(true);
+    setIsNewsFailed(false);
+    setIsNews(true);
     api
       .getNews(search)
       .then((data) => {
-        setNews(data.articles);
+        if (data.totalResults > 0) {
+          setNews(data.articles);
+          setIsNews(true);
+          setIsNewsFailed(false);
+          setIsPreloaderOpen(false);
+          return;
+        }
+        setIsPreloaderOpen(true);
+        setIsNewsFailed(true);
         setIsNews(true);
-        setIsPreloaderOpen(false);
+        setNews([]);
       })
       .catch((err) => {
+        setIsPreloaderOpen(true);
+        setIsNewsFailed(true);
+        setIsNews(true);
+        setNews([]);
         console.log(err);
       });
   };
+
   const jwt = localStorage.getItem('jwt');
   const username = localStorage.getItem('username');
   const tokenCheck = React.useCallback(() => {
@@ -140,6 +156,8 @@ function App() {
     auth
       .getArticles(jwt)
       .then((data) => {
+        setIsNewsSaved(true);
+        setTooltip('Delete article');
         setSavedArticles(data.data);
       })
       .catch((err) => console.log(err));
@@ -158,32 +176,14 @@ function App() {
       });
   }, [history, jwt]);
 
-  // React.useEffect((data) => {
-  //   getSavedArticles();
-  // }, []);
-
-  // const getSavedArticles = (data) => {
-  //   if (!data._id) {
-  //     console.log(data);
-  //     setIsNewsSaved(false);
-  //     setTooltip('Save article');
-  //   }
-  //   setIsNewsSaved(true);
-  //   setTooltip('Delete article');
-  // };
-
   //saving an article
   const handleSaveArticle = (data) => {
-    console.log(data);
-    if (!data._id) {
-      auth
-        .saveArticles(data, jwt)
-        .then((data) => {
-          setSavedArticles([data.data, ...savedArticles]);
-        })
-        .catch((err) => console.log(err));
-    }
-    handleDeleteArticle(data);
+    auth
+      .saveArticles(data, jwt)
+      .then((data) => {
+        setSavedArticles([data.data, ...savedArticles]);
+      })
+      .catch((err) => console.log(err));
   };
 
   //deleting an article
@@ -207,6 +207,7 @@ function App() {
             onSignIn={handleSigninPopup}
             onSubmit={handleGetNews}
             isNews={isNews}
+            isNewsFailed={isNewsFailed}
             isNewsSaved={isNewsSaved}
             news={news}
             isLoggedIn={isLogin}
@@ -217,6 +218,7 @@ function App() {
             username={username}
             tooltip={tooltip}
             signIn={handleSigninPopup}
+            isPreloaderOpen={isPreloaderOpen}
           />
         </Route>
         <ProtectedRoute path='/articles' login={isLogin}>
@@ -227,7 +229,7 @@ function App() {
             savedArticleLength={savedArticles.length}
             username={username}
             onSignOut={handleLogOut}
-            onClick={handleSaveArticle}
+            onClick={handleDeleteArticle}
             tooltip={tooltip}
           />
         </ProtectedRoute>
