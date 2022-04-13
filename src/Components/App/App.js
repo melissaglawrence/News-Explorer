@@ -96,7 +96,7 @@ function App() {
       .signIn(data)
       .then((data) => {
         if (!data) {
-          return setErrorMessage('the user with the specified email not found');
+          return setErrorMessage('Incorrect email or password');
         }
         if (data) {
           tokenCheck();
@@ -107,7 +107,7 @@ function App() {
         }
       })
       .catch(() => {
-        setErrorMessage('one or more of the fields were not provided');
+        setErrorMessage('Incorrect email or password');
       });
   };
 
@@ -159,13 +159,18 @@ function App() {
   }, [history, jwt]);
 
   // React.useEffect((data) => {
+  //   getSavedArticles();
+  // }, []);
+
+  // const getSavedArticles = (data) => {
   //   if (!data._id) {
+  //     console.log(data);
   //     setIsNewsSaved(false);
   //     setTooltip('Save article');
   //   }
   //   setIsNewsSaved(true);
   //   setTooltip('Delete article');
-  // }, []);
+  // };
 
   //saving an article
   const handleSaveArticle = (data) => {
@@ -232,12 +237,14 @@ function App() {
         onClose={handleOnClose}
         onSignUp={handleSignupPopup}
         onSignInSubmit={handleSignIn}
+        errorMessage={errorMessage}
       />
       <SignUp
         isOpen={isSignupOpen}
         onClose={handleOnClose}
         onSignIn={handleSigninPopup}
         onSignUpSubmit={handleSignUp}
+        errorMessage={errorMessage}
       />
     </>
   );

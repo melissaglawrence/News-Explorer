@@ -6,3 +6,8 @@
   line-height: 24px;
   margin: 0 0 88px;
 }
+
+@media screen and (max-width: 635px) {
+  .header__text {
+  margin: 0 20px 62px;  }
+}

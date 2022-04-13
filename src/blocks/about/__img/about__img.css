@@ -5,3 +5,16 @@
   width: 100%;
   margin: 0 56px 0;
 }
+
+@media screen and (max-width: 950px) {
+  .about__img {
+    width: 350px;
+    height: 350px;
+  }
+}
+
+@media screen and (max-width: 875px) {
+  .about__img {
+    margin-bottom: 56px;
+  }
+}

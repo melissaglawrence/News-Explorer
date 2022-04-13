@@ -4,3 +4,9 @@
   align-items: center;
   margin: 80px;
 }
+
+@media screen and (max-width: 875px) {
+  .about__container {
+flex-direction: column;
+  }
+}

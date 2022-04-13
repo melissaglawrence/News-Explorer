@@ -3,9 +3,22 @@ import { Link } from 'react-router-dom';
 import user from '../../images/User.svg';
 
 function Navigation(props) {
+  const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+
+  const handleOpenMenu = () => {
+    setIsMenuOpen(true);
+  };
+
+  const handleCloseMenu = () => {
+    setIsMenuOpen(false);
+  };
   return (
     <>
-      <div className='nav'>
+      <div className={`nav ${isMenuOpen ? 'nav__open_menu' : null}`}>
+        <button
+          className={` ${isMenuOpen ? 'nav__menu_close' : 'nav__menu'}`}
+          onClick={isMenuOpen ? handleCloseMenu : handleOpenMenu}
+        />
         <Link
           to='/'
           className={`nav__link button ${
@@ -14,7 +27,7 @@ function Navigation(props) {
         >
           NewsExplorer
         </Link>
-        <div>
+        <div className={`${isMenuOpen ? 'nav__open' : 'nav__hidden'}`}>
           <Link
             to='/'
             className={`nav__link button ${

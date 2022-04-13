@@ -21,6 +21,9 @@ const SignUp = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSignUpSubmit({ password, email, username });
+    setUsername('');
+    setPassword('');
+    setEmail('');
   };
   return (
     <>

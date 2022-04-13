@@ -16,6 +16,8 @@ const SignIn = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     props.onSignInSubmit({ password, email });
+    setPassword('');
+    setEmail('');
   };
   return (
     <>

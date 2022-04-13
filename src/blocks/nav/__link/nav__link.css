@@ -10,3 +10,10 @@
 .nav__link:last-of-type {
   margin-right: 0;
 }
+
+@media screen and (max-width: 580px) {
+  .nav__link {
+    margin: 12px 0 10px;
+
+  }
+}
