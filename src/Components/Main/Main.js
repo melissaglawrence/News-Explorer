@@ -21,12 +21,11 @@ function Main(props) {
           isNewsSearch={props.isNewsSearch}
           news={props.news}
           isLoggedIn={props.isLoggedIn}
-          tooltip={props.tooltip}
           onClick={props.onClick}
-          isNewsSaved={props.isNewsSaved}
           signIn={props.signIn}
           isPreloaderOpen={props.isPreloaderOpen}
           isNewsFailed={props.isNewsFailed}
+          savedId={props.savedId}
         />
       ) : null}
       <About />

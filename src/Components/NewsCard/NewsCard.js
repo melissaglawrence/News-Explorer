@@ -23,14 +23,20 @@ function NewsCard(props) {
 
   const handleSave = (e) => {
     e.preventDefault();
+    if (!props.news.isSaved) {
+      props.onClick(props.news);
+      props.news.isSaved = true;
+      return;
+    }
     props.onClick(props.news);
+    props.news.isSaved = false;
   };
 
   const handleSignIn = (e) => {
     e.preventDefault();
     props.signIn();
   };
-
+  console.log(props.news);
   return (
     <>
       <li className='news__item'>
@@ -38,10 +44,10 @@ function NewsCard(props) {
         <button
           className={`news__button button ${
             props.isNewsSearch
-              ? props.isNewsSaved
+              ? props.news.isSaved
                 ? 'news__save_active'
                 : 'news__save'
-              : props.isNewsSaved
+              : props.news.isSaved || props.isNewsSaved
               ? 'news__delete'
               : 'news__save'
           }`}

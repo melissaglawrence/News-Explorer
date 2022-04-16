@@ -27,8 +27,8 @@ function SavedNews(props) {
                 tag={article.source}
                 news={article}
                 isLoggedIn={props.isLoggedIn}
-                tooltip={props.tooltip}
-                isNewsSaved={props.isNewsSaved}
+                tooltip={'Delete article'}
+                isNewsSaved={true}
                 onClick={props.onClick}
                 isNewsSearch={false}
               />

@@ -13,11 +13,11 @@ const SuccessPopup = (props) => {
           aria-label='Close'
           onClick={props.onClose}
         />
-        <h1 className='tooltip__title'>Registration successfully completed!</h1>
+        <h1 className='popup__title'>Registration successfully completed!</h1>
         <button
-          className='tooltip__link button'
+          className='form__link button'
           type='button'
-          onClick={props.signIn}
+          onClick={props.onSignIn}
         >
           Sign In
         </button>

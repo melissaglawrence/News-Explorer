@@ -13,6 +13,7 @@ import * as auth from '../../utils/auth';
 function App() {
   const [isSigninOpen, setIsSigninOpen] = React.useState(false);
   const [isSignupOpen, setIsSignupOpen] = React.useState(false);
+  const [isSuccessOpen, setIsSuccessOpen] = React.useState(false);
   const [isLogin, setIsLogin] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
   const [news, setNews] = React.useState([]);
@@ -22,22 +23,25 @@ function App() {
   const [isNewsSaved, setIsNewsSaved] = React.useState(false);
   const [savedArticles, setSavedArticles] = React.useState([]);
   const [errorMessage, setErrorMessage] = React.useState('');
-  const [tooltip, setTooltip] = React.useState('Save article');
   const history = useHistory();
 
   const handleOnClose = () => {
     setIsSigninOpen(false);
     setIsSignupOpen(false);
+    setIsSuccessOpen(false);
+    setErrorMessage('');
   };
 
   const handleSigninPopup = () => {
     setIsSignupOpen(false);
     setIsSigninOpen(true);
+    setIsSuccessOpen(false);
   };
 
   const handleSignupPopup = () => {
     setIsSigninOpen(false);
     setIsSignupOpen(true);
+    setIsSuccessOpen(false);
   };
 
   const handleGetNews = (search) => {
@@ -134,7 +138,7 @@ function App() {
         if (res) {
           setErrorMessage('');
           setIsSignupOpen(false);
-          setIsLogin(true);
+          setIsSuccessOpen(true);
           return;
         } else {
           return setErrorMessage('One of the fields was filled in incorrectly');
@@ -156,8 +160,6 @@ function App() {
     auth
       .getArticles(jwt)
       .then((data) => {
-        setIsNewsSaved(true);
-        setTooltip('Delete article');
         setSavedArticles(data.data);
       })
       .catch((err) => console.log(err));
@@ -178,17 +180,21 @@ function App() {
 
   //saving an article
   const handleSaveArticle = (data) => {
-    auth
-      .saveArticles(data, jwt)
-      .then((data) => {
-        setSavedArticles([data.data, ...savedArticles]);
-      })
-      .catch((err) => console.log(err));
+    console.log(data.isSaved);
+    if (!data.isSaved) {
+      auth
+        .saveArticles(data, jwt)
+        .then((data) => {
+          setSavedArticles([data.data, ...savedArticles]);
+          return;
+        })
+        .catch((err) => console.log(err));
+    }
+    handleDeleteArticle(data);
   };
 
   //deleting an article
   const handleDeleteArticle = (data) => {
-    console.log(data);
     auth
       .deleteArticle(data._id, jwt)
       .then(() => {
@@ -208,7 +214,6 @@ function App() {
             onSubmit={handleGetNews}
             isNews={isNews}
             isNewsFailed={isNewsFailed}
-            isNewsSaved={isNewsSaved}
             news={news}
             isLoggedIn={isLogin}
             onSavedArticles={handleSavedArticles}
@@ -216,21 +221,18 @@ function App() {
             isUser={username}
             onClick={handleSaveArticle}
             username={username}
-            tooltip={tooltip}
             signIn={handleSigninPopup}
             isPreloaderOpen={isPreloaderOpen}
           />
         </Route>
         <ProtectedRoute path='/articles' login={isLogin}>
           <SavedNews
-            isNewsSaved={isNewsSaved}
             news={savedArticles}
             isLoggedIn={isLogin}
             savedArticleLength={savedArticles.length}
             username={username}
             onSignOut={handleLogOut}
             onClick={handleDeleteArticle}
-            tooltip={tooltip}
           />
         </ProtectedRoute>
       </Switch>
@@ -247,6 +249,11 @@ function App() {
         onSignIn={handleSigninPopup}
         onSignUpSubmit={handleSignUp}
         errorMessage={errorMessage}
+      />
+      <SuccessPopup
+        isOpen={isSuccessOpen}
+        onClose={handleOnClose}
+        onSignIn={handleSigninPopup}
       />
     </>
   );

@@ -27,11 +27,11 @@ function NewsCardList(props) {
                 tag={article.source.name}
                 publishedAt={article.publishedAt}
                 isLoggedIn={props.isLoggedIn}
-                tooltip={props.tooltip}
+                tooltip={article.isSaved ? 'Saved!' : 'Save Article'}
                 onClick={props.onClick}
-                isNewsSaved={props.isNewsSaved}
                 signIn={props.signIn}
                 isNewsSearch={true}
+                savedId={props.savedId}
               />
             );
           })}
