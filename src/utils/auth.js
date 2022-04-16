@@ -96,10 +96,10 @@ const deleteArticle = (id, token) => {
   }).then(handleResponse);
 };
 
-const BASE_URL = 'http://localhost:3000';
-//   process.env.NODE_ENV === 'production'
-//     ? 'https://nomoreparties.co/news/v2/everything'
-//     : 'http://localhost:3000';
+const BASE_URL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://newsexplorer.students.nomoreparties.sbs'
+    : 'http://localhost:3000';
 
 export {
   signIn,
