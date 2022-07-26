@@ -80,7 +80,6 @@ function App() {
         .getUser(jwt)
         .then((data) => {
           if (data) {
-            console.log(data);
             setCurrentUser(data);
             setIsLogin(true);
           } else {
@@ -180,7 +179,6 @@ function App() {
 
   //saving an article
   const handleSaveArticle = (data) => {
-    console.log(data.isSaved);
     if (!data.isSaved) {
       auth
         .saveArticles(data, jwt)

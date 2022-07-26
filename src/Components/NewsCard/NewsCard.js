@@ -36,7 +36,6 @@ function NewsCard(props) {
     e.preventDefault();
     props.signIn();
   };
-  console.log(props.news);
   return (
     <>
       <li className='news__item'>
