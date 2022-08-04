@@ -1,12 +1,12 @@
 const express = require('express');
 
-const { PORT = 3000 } = process.env;
+const PORT = process.env.PORT || 3000;
 
 const app = express();
 
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost:27017/news');
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/news');
 
 require('dotenv').config();
 
@@ -37,6 +37,10 @@ app.use(limiter);
 app.use(cors());
 
 app.use(helmet());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('../build'));
+}
 
 app.options('*', cors());
 
