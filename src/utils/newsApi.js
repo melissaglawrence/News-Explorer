@@ -26,7 +26,7 @@ class Api {
   }
 }
 
-const BASE_URL = 'https://nomoreparties.co/news/v2/everything';
+const BASE_URL = 'https://news-explorer-api-7auj.onrender.com';
 
 const d = new Date();
 const newDate = `${d.getFullYear()}-${d.getMonth() + 1}-${d.getDate()}`;

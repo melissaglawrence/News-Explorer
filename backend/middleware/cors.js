@@ -1,4 +1,7 @@
-const allowedOrigins = ['http://localhost:3001'];
+const allowedOrigins = [
+  'http://localhost:3001',
+  'https://news-explorer-63tc.onrender.com',
+];
 
 const allowedMethods = ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'];
 

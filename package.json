@@ -37,6 +37,5 @@
       "last 1 safari version"
     ]
   },
-  "homepage": ".",
   "proxy": "https://newsapi.org/v2/everything"
 }
