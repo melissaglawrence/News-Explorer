@@ -4,7 +4,7 @@ This repository contains the full API of "Around the U.S." project that features
 
 ## Link to site
 
-https://news-explorer-63tc.onrender.com/
+https://newsexplorer.students.nomoreparties.sbs
 
 ## Tech
 
@@ -13,4 +13,3 @@ Created using React and express. Responsive CSS using BEM file structure for org
 ## Functionality
 
 Users are able to Sign up and Log in. Whether they are logged in or not users can search national news articles. After successful log in users can save their favorite articles or save them to read later.
-
