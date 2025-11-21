@@ -98,7 +98,7 @@ const deleteArticle = (id, token) => {
 
 const BASE_URL =
   process.env.NODE_ENV === 'production'
-    ? 'https://news-explorer-api-7auj.onrender.com'
+    ? 'https://newsexplorer.students.nomoreparties.sbs'
     : 'http://localhost:3000';
 
 export {
