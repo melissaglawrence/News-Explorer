@@ -1,0 +1,14 @@
+.footer__link {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1a1b22;
+  margin-right: 40px;
+}
+
+.footer__link:last-of-type {
+  margin: 0;
+}

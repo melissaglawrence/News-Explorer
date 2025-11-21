@@ -1,0 +1,10 @@
+.button {
+  cursor: pointer;
+  text-decoration: none;
+  border: none;
+  outline: none;
+}
+
+.button:hover {
+  opacity: 0.9;
+}

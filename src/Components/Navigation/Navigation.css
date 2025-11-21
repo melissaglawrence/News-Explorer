@@ -1,0 +1,17 @@
+@import url(../../blocks/nav/nav.css);
+@import url(../../blocks/nav/__link/nav__link.css);
+@import url(../../blocks/nav/__link/_user/nav__link_user.css);
+@import url(../../blocks/nav/__img/nav__img.css);
+@import url(../../blocks/nav/__link/_sign-in/nav__link_sign-in.css);
+@import url(../../blocks/nav/__link/_user/nav__link_user.css);
+@import url(../../blocks/nav/__sign-out/nav__sign-out.css);
+@import url(../../blocks/nav/__dark/nav__dark.css);
+@import url(../../blocks/nav/__light/nav__light.css);
+@import url(../../blocks/nav/__menu/nav__menu.css);
+@import url(../../blocks/nav/__menu/_close/nav__menu_close.css);
+@import url(../../blocks/nav/__open/nav__open.css);
+@import url(../../blocks/nav/__hidden/nav__hidden.css);
+@import url(../../blocks/nav/__open/_menu/nav__open_menu.css);
+@import url(../../blocks/nav/__sign-out/_dark/nav__sign-out_dark.css);
+@import url(../../blocks/nav/__menu/_dark/nav__menu_dark.css);
+@import url(../../blocks/nav/__menu/_close/_dark/nav__menu_close_dark.css);

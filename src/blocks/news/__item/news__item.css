@@ -1,0 +1,7 @@
+.news__item {
+  height: 576px;
+  width: 400px;
+  border-radius: 10px;
+  background-color: white;
+  position: relative;
+}

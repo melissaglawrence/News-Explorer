@@ -1,0 +1,24 @@
+.news__show-more {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  display: flex;
+  align-items: center;
+  text-align: center;
+  color: #1a1b22;
+  border-radius: 80px;
+  padding: 20px 99px;
+  border: none;
+  outline: none;
+  margin: 0 auto;
+  margin-top: 64px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.news__show-more:hover {
+  background: #e8e8e8;
+}

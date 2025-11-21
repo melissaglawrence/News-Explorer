@@ -1,0 +1,13 @@
+.header__text {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  margin: 0 0 88px;
+}
+
+@media screen and (max-width: 635px) {
+  .header__text {
+  margin: 0 20px 62px;  }
+}

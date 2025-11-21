@@ -1,0 +1,11 @@
+.form__redirect {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 17px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  margin: 16px 0 28px;
+}
